@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 const assert = require('assert');
-const debug = require('./src');
+const debug = require('../src/index.js');
 
 describe('debug', () => {
 	it('passes a basic sanity check', () => {
@@ -122,7 +122,7 @@ describe('debug', () => {
 			debug.disable('*');
 			const inst = debug('foo');
 			const messages = [];
-			inst.log = msg => messages.push(msg.replace(/^[^@]*@([^@]+)@.*$/, '$1'));
+			inst.log = (msg) => messages.push(msg.replace(/^[^@]*@([^@]+)@.*$/, '$1'));
 
 			inst('@test@');
 			assert.deepStrictEqual(messages, []);
